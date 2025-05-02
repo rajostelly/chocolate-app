@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 20 14.3% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14.3% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14.3% 4.1%;
+    --primary: 24 75% 35%;
+    --primary-foreground: 60 9.1% 97.8%;
+    --secondary: 142 76% 36%;
+    --secondary-foreground: 24 9.8% 10%;
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+    --accent: 142 70% 95%;
+    --accent-foreground: 142 76% 36%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 24 75% 35%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 60 9.1% 97.8%;
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 60 9.1% 97.8%;
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 60 9.1% 97.8%;
+    --primary: 24 75% 35%;
+    --primary-foreground: 60 9.1% 97.8%;
+    --secondary: 142 76% 36%;
+    --secondary-foreground: 60 9.1% 97.8%;
+    --muted: 12 6.5% 15.1%;
+    --muted-foreground: 24 5.4% 63.9%;
+    --accent: 142 70% 15%;
+    --accent-foreground: 142 76% 36%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+    --ring: 24 75% 35%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom colors */
+.text-chocolate-800 {
+  color: #5d4037;
+}
+
+.text-chocolate-700 {
+  color: #6d4c41;
+}
+
+.text-chocolate-600 {
+  color: #795548;
+}
+
+.bg-chocolate-800 {
+  background-color: #5d4037;
+}
+
+.bg-chocolate-700 {
+  background-color: #6d4c41;
+}
+
+.bg-chocolate-600 {
+  background-color: #795548;
+}
+
+.bg-chocolate-50 {
+  background-color: #efebe9;
+}
+
+.border-chocolate-200 {
+  border-color: #d7ccc8;
+}
+
+.border-chocolate-100 {
+  border-color: #e5d3c8;
+}
+
+.hover\:bg-chocolate-800:hover {
+  background-color: #5d4037;
+}
