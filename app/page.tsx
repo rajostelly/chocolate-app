@@ -35,7 +35,7 @@ export default function Home() {
         <Link href="/recettes" className="block">
           <Card className="border-3 pb-6 border-chocolate-300 ring-2 ring-chocolate-100/50 ring-offset-2  overflow-hidden h-full transition-all duration-200 ease-linear rounded-[2rem] hover:bg-chocolate-100/40 group">
             <CardHeader className="pt-6">
-              <div className="bg-green-50 group-hover:bg-emerald-400 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
+              <div className="bg-emerald-50 group-hover:bg-emerald-400 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
                 <Candy className="h-8 w-8 text-emerald-600 group-hover:text-white" />
               </div>
               <CardTitle className="text-2xl tracking-wide">
@@ -58,7 +58,7 @@ export default function Home() {
         <Link href="/calculateur" className="block">
           <Card className="border-3 pb-6 border-chocolate-300 ring-2 ring-chocolate-100/50 ring-offset-2  overflow-hidden h-full transition-all duration-200 ease-linear rounded-[2rem] hover:bg-chocolate-100/40 group">
             <CardHeader className="pt-6">
-              <div className="bg-green-50 group-hover:bg-emerald-400 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
+              <div className="bg-emerald-50 group-hover:bg-emerald-400 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
                 <Calculator className="h-8 w-8 text-emerald-600 group-hover:text-white" />
               </div>
               <CardTitle className="text-2xl tracking-wide">
@@ -81,7 +81,7 @@ export default function Home() {
         <Link href="/recettes" className="block">
           <Card className="border-3 pb-6 border-chocolate-300 ring-2 ring-chocolate-100/50 ring-offset-2  overflow-hidden h-full transition-all duration-200 ease-linear rounded-[2rem] hover:bg-chocolate-100/40 group">
             <CardHeader className="pt-6">
-              <div className="bg-green-50 group-hover:bg-emerald-400 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
+              <div className="bg-emerald-50 group-hover:bg-emerald-400 p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
                 <Utensils className="h-8 w-8 text-emerald-600 group-hover:text-white" />
               </div>
               <CardTitle className="text-2xl tracking-wide">
