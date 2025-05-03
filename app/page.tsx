@@ -105,7 +105,7 @@ export default function Home() {
       <section className="bg-gradient-to-r from-chocolate-50/50 to-green-50/50 px-10 md:px-16 py-10 md:py-16 rounded-[2.5rem] shadow-sm">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-chocolate-800 mb-5 tracking-wide">
-            Nos Chocolats phares
+            Nos chocolats phares
           </h2>
           <p className="text-gray-700 text-lg leading-8 max-w-2xl mx-auto">
             Découvrez nos trois recettes principales, élaborées spécialement

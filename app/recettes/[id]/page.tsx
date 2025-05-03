@@ -132,7 +132,7 @@ export default function RecipeDetailPage() {
             onClick={handlePrint}
           >
             <TrashIcon className="mr-2 h-4 w-4" />
-            Imprimer
+            Supprimer
           </Button>
         </div>
       </div>
