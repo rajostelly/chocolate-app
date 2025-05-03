@@ -147,7 +147,7 @@ export default function RecipesPage() {
                   {recipe.ingredients.length > 3 && (
                     <Badge
                       variant="secondary"
-                      className="bg-chocolate-50 text-chocolate-700"
+                      className="bg-chocolate-50 text-chocolate-700 group-hover:bg-white"
                     >
                       +{recipe.ingredients.length - 3}
                     </Badge>
