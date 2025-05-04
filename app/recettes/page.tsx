@@ -70,7 +70,7 @@ export default function RecipesPage() {
             Recettes de chocolat
           </h1>
           <p className="text-gray-700 tracking-wide leading-6">
-            Découvrez nos délicieuses recettes de chocolat pour diabétiques
+            Découvrez nos délicieuses recettes de chocolat pour diabétiques.
           </p>
         </div>
         <Link href="/recettes/nouvelle">
