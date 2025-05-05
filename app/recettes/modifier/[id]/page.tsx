@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { useParams, useRouter } from "next/navigation"
-import Link from "next/link"
-import { useForm, useFieldArray } from "react-hook-form"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { ArrowLeft, Plus, Trash2, Save } from "lucide-react"
-import type { Recipe } from "@/lib/types"
-import { initialRecipes } from "@/lib/data"
+import { useState, useEffect } from "react";
+import { useParams, useRouter } from "next/navigation";
+import Link from "next/link";
+import { useForm, useFieldArray } from "react-hook-form";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { ArrowLeft, Plus, Trash2, Save } from "lucide-react";
+import type { Recipe } from "@/lib/types";
+import { initialRecipes } from "@/lib/data";
 
 export default function EditRecipePage() {
-  const params = useParams()
-  const router = useRouter()
-  const [loading, setLoading] = useState(true)
+  const params = useParams();
+  const router = useRouter();
+  const [loading, setLoading] = useState(true);
 
   const {
     register,
@@ -26,7 +26,7 @@ export default function EditRecipePage() {
     setValue,
     reset,
     formState: { errors },
-  } = useForm<Recipe>()
+  } = useForm<Recipe>();
 
   const {
     fields: ingredientFields,
@@ -35,7 +35,7 @@ export default function EditRecipePage() {
   } = useFieldArray({
     control,
     name: "ingredients",
-  })
+  });
 
   const {
     fields: protocolFields,
@@ -44,57 +44,59 @@ export default function EditRecipePage() {
   } = useFieldArray({
     control,
     name: "protocol",
-  })
+  });
 
   useEffect(() => {
-    const recipeId = params.id as string
+    const recipeId = params.id as string;
 
     // Récupérer les recettes du localStorage ou utiliser les recettes initiales
-    const storedRecipes = localStorage.getItem("recipes")
-    const recipes = storedRecipes ? JSON.parse(storedRecipes) : initialRecipes
+    const storedRecipes = localStorage.getItem("recipes");
+    const recipes = storedRecipes ? JSON.parse(storedRecipes) : initialRecipes;
 
-    const foundRecipe = recipes.find((r: Recipe) => r.id === recipeId)
+    const foundRecipe = recipes.find((r: Recipe) => r.id === recipeId);
 
     if (foundRecipe) {
-      reset(foundRecipe)
+      reset(foundRecipe);
     } else {
       // Rediriger si la recette n'existe pas
-      router.push("/recettes")
+      router.push("/recettes");
     }
 
-    setLoading(false)
-  }, [params.id, router, reset])
+    setLoading(false);
+  }, [params.id, router, reset]);
 
   // Observer les ingrédients pour calculer le coût total avec useEffect
-  const ingredients = watch("ingredients") || []
-  const [totalCost, setTotalCost] = useState(0)
+  const ingredients = watch("ingredients") || [];
+  const [totalCost, setTotalCost] = useState(0);
 
   useEffect(() => {
     const calculatedCost = ingredients.reduce((sum, ingredient) => {
-      return sum + (ingredient.quantity * ingredient.price) / 1000
-    }, 0)
+      return sum + (ingredient.quantity * ingredient.price) / 1000;
+    }, 0);
 
-    setTotalCost(calculatedCost)
-    setValue("totalCost", calculatedCost)
-  }, [ingredients, setValue])
+    setTotalCost(calculatedCost);
+    setValue("totalCost", calculatedCost);
+  }, [ingredients, setValue]);
 
   const onSubmit = (data: Recipe) => {
     // Récupérer les recettes existantes
-    const storedRecipes = localStorage.getItem("recipes")
-    const recipes = storedRecipes ? JSON.parse(storedRecipes) : []
+    const storedRecipes = localStorage.getItem("recipes");
+    const recipes = storedRecipes ? JSON.parse(storedRecipes) : [];
 
     // Mettre à jour la recette
-    const updatedRecipes = recipes.map((recipe: Recipe) => (recipe.id === data.id ? data : recipe))
+    const updatedRecipes = recipes.map((recipe: Recipe) =>
+      recipe.id === data.id ? data : recipe
+    );
 
     // Sauvegarder dans localStorage
-    localStorage.setItem("recipes", JSON.stringify(updatedRecipes))
+    localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
 
     // Rediriger vers la liste des recettes
-    router.push("/recettes")
-  }
+    router.push("/recettes");
+  };
 
   if (loading) {
-    return <div className="text-center py-12">Chargement...</div>
+    return <div className="text-center py-12">Chargement...</div>;
   }
 
   return (
@@ -108,12 +110,16 @@ export default function EditRecipePage() {
         </Link>
       </div>
 
-      <h1 className="text-3xl font-bold text-chocolate-800">Modifier la Recette</h1>
+      <h1 className="text-3xl font-bold text-chocolate-800">
+        Modifier la Recette
+      </h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <Card>
           <CardHeader>
-            <CardTitle className="text-chocolate-800">Informations générales</CardTitle>
+            <CardTitle className="text-chocolate-800">
+              Informations générales
+            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid gap-2">
@@ -124,7 +130,9 @@ export default function EditRecipePage() {
                 placeholder="Ex: Chocolat aux baies de goji"
                 className={errors.name ? "border-red-300" : ""}
               />
-              {errors.name && <p className="text-sm text-red-500">{errors.name.message}</p>}
+              {errors.name && (
+                <p className="text-sm text-red-500">{errors.name.message}</p>
+              )}
             </div>
 
             <div className="grid gap-2">
@@ -150,12 +158,19 @@ export default function EditRecipePage() {
                   placeholder="Ex: 15"
                   className={errors.yield ? "border-red-300" : ""}
                 />
-                {errors.yield && <p className="text-sm text-red-500">{errors.yield.message}</p>}
+                {errors.yield && (
+                  <p className="text-sm text-red-500">{errors.yield.message}</p>
+                )}
               </div>
 
               <div className="grid gap-2">
                 <Label htmlFor="stock">Stock actuel</Label>
-                <Input id="stock" type="number" {...register("stock", { min: 0 })} placeholder="Ex: 0" />
+                <Input
+                  id="stock"
+                  type="number"
+                  {...register("stock", { min: 0 })}
+                  placeholder="Ex: 0"
+                />
               </div>
             </div>
           </CardContent>
@@ -168,7 +183,9 @@ export default function EditRecipePage() {
               type="button"
               variant="outline"
               size="sm"
-              onClick={() => appendIngredient({ name: "", quantity: 0, price: 0 })}
+              onClick={() =>
+                appendIngredient({ name: "", quantity: 0, price: 0 })
+              }
               className="border-green-200 text-green-700"
             >
               <Plus className="mr-2 h-4 w-4" />
@@ -182,14 +199,20 @@ export default function EditRecipePage() {
                   <Label htmlFor={`ingredients.${index}.name`}>Nom</Label>
                   <Input
                     id={`ingredients.${index}.name`}
-                    {...register(`ingredients.${index}.name` as const, { required: "Requis" })}
+                    {...register(`ingredients.${index}.name` as const, {
+                      required: "Requis",
+                    })}
                     placeholder="Ex: Pâte de chocolat noir"
-                    className={errors.ingredients?.[index]?.name ? "border-red-300" : ""}
+                    className={
+                      errors.ingredients?.[index]?.name ? "border-red-300" : ""
+                    }
                   />
                 </div>
 
                 <div className="col-span-2">
-                  <Label htmlFor={`ingredients.${index}.quantity`}>Quantité (g)</Label>
+                  <Label htmlFor={`ingredients.${index}.quantity`}>
+                    Quantité (g)
+                  </Label>
                   <Input
                     id={`ingredients.${index}.quantity`}
                     type="number"
@@ -199,12 +222,18 @@ export default function EditRecipePage() {
                       min: { value: 0, message: "Min 0" },
                     })}
                     placeholder="Ex: 100"
-                    className={errors.ingredients?.[index]?.quantity ? "border-red-300" : ""}
+                    className={
+                      errors.ingredients?.[index]?.quantity
+                        ? "border-red-300"
+                        : ""
+                    }
                   />
                 </div>
 
                 <div className="col-span-3">
-                  <Label htmlFor={`ingredients.${index}.price`}>Prix (Ar/kg)</Label>
+                  <Label htmlFor={`ingredients.${index}.price`}>
+                    Prix (Ar/kg)
+                  </Label>
                   <Input
                     id={`ingredients.${index}.price`}
                     type="number"
@@ -214,7 +243,9 @@ export default function EditRecipePage() {
                       min: { value: 0, message: "Min 0" },
                     })}
                     placeholder="Ex: 25"
-                    className={errors.ingredients?.[index]?.price ? "border-red-300" : ""}
+                    className={
+                      errors.ingredients?.[index]?.price ? "border-red-300" : ""
+                    }
                   />
                 </div>
 
@@ -236,14 +267,18 @@ export default function EditRecipePage() {
 
             <div className="flex justify-between pt-4 border-t border-gray-100">
               <span className="font-medium">Coût total des ingrédients:</span>
-              <span className="font-medium text-chocolate-700">{totalCost.toLocaleString()} Ar</span>
+              <span className="font-medium text-chocolate-700">
+                {totalCost.toLocaleString()} Ar
+              </span>
             </div>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle className="text-chocolate-800">Protocole de fabrication</CardTitle>
+            <CardTitle className="text-chocolate-800">
+              Protocole de fabrication
+            </CardTitle>
             <Button
               type="button"
               variant="outline"
@@ -263,12 +298,18 @@ export default function EditRecipePage() {
                     Étape {index + 1}
                   </Label>
                   <div className="flex items-center gap-2">
-                    <span className="font-medium text-chocolate-700 w-6">{index + 1}.</span>
+                    <span className="font-medium text-chocolate-700 w-6">
+                      {index + 1}.
+                    </span>
                     <Input
                       id={`protocol.${index}`}
-                      {...register(`protocol.${index}` as const, { required: "Requis" })}
+                      {...register(`protocol.${index}` as const, {
+                        required: "Requis",
+                      })}
                       placeholder={`Étape ${index + 1} du protocole...`}
-                      className={errors.protocol?.[index] ? "border-red-300" : ""}
+                      className={
+                        errors.protocol?.[index] ? "border-red-300" : ""
+                      }
                     />
                   </div>
                 </div>
@@ -295,12 +336,15 @@ export default function EditRecipePage() {
               Annuler
             </Button>
           </Link>
-          <Button type="submit" className="bg-chocolate-700 hover:bg-chocolate-800">
+          <Button
+            type="submit"
+            className="bg-chocolate-700 hover:bg-chocolate-800"
+          >
             <Save className="mr-2 h-4 w-4" />
             Enregistrer les modifications
           </Button>
         </div>
       </form>
     </div>
-  )
+  );
 }
