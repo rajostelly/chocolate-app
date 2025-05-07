@@ -13,3 +13,26 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Recipe {
+  id          String       @id @default(uuid())
+  name        String
+  description String?      @db.Text
+  protocol    String[]
+  molding     String[]
+  yield       Int
+  totalCost   Float
+  stock       Int
+  ingredients Ingredient[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Ingredient {
+  id       String @id @default(uuid())
+  name     String
+  quantity Float
+  price    Float
+  recipeId String
+  recipe   Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+}
