@@ -4,6 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Home, CookingPot, Calculator } from "lucide-react";
+import Image from "next/image";
+import ispm from "@/public/ispm.jpeg";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -16,7 +18,14 @@ export default function Navbar() {
     <header className="bg-white border-b border-gray-200 sticky top-0 z-10 maw-w-7xl mx-auto px-4 md:px-12">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
-          <div className="flex items-center">
+          <div className="flex items-center gap-4 justify-center">
+            <Image
+              src={ispm}
+              alt="ispm logo"
+              className="h-12"
+              width={48}
+              height={48}
+            />
             <Link href="/" className="flex items-center">
               <span className="text-2xl font-bold text-chocolate-700">
                 ChocoDiab
