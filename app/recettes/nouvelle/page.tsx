@@ -1,6 +1,6 @@
-import RecipeForm from "@/components/recipes/recipe-form";
 import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import RecipeForm from "@/components/recipes/recipe-form";
 
 export default function NewRecipePage() {
   return (
