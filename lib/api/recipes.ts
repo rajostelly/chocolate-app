@@ -1,5 +1,5 @@
-import { API_ENDPOINTS } from "@/constants";
 import type { RecipeWithIngredients } from "@/types";
+import { API_ENDPOINTS } from "@/constants";
 
 // Get all recipes
 export async function getRecipes(): Promise<RecipeWithIngredients[]> {
