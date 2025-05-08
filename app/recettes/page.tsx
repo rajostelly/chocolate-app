@@ -1,8 +1,8 @@
 "use client";
 
-import { Suspense } from "react";
 import RecipeListSkeleton from "@/components/recipes/recipe-list-skeleton";
 import RecipeList from "@/components/recipes/recipe-list";
+import { Suspense } from "react";
 
 export default function RecipesPage() {
   return (
