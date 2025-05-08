@@ -1,28 +1,31 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import Link from "next/link"
-import { useForm, useFieldArray } from "react-hook-form"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Plus, Trash2, Save } from "lucide-react"
-import type { RecipeFormData, RecipeWithIngredients } from "@/types"
-import { useCreateRecipe, useUpdateRecipe } from "@/hooks/use-recipes"
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { useForm, useFieldArray } from "react-hook-form";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Plus, Trash2, Save } from "lucide-react";
+import type { RecipeFormData, RecipeWithIngredients } from "@/types";
+import { useCreateRecipe, useUpdateRecipe } from "@/hooks/use-recipes";
 
 interface RecipeFormProps {
-  recipe?: RecipeWithIngredients
-  isEditing?: boolean
+  recipe?: RecipeWithIngredients;
+  isEditing?: boolean;
 }
 
-export default function RecipeForm({ recipe, isEditing = false }: RecipeFormProps) {
-  const router = useRouter()
-  const createRecipeMutation = useCreateRecipe()
-  const updateRecipeMutation = useUpdateRecipe()
-  const [calculatingPrice, setCalculatingPrice] = useState(false)
+export default function RecipeForm({
+  recipe,
+  isEditing = false,
+}: RecipeFormProps) {
+  const router = useRouter();
+  const createRecipeMutation = useCreateRecipe();
+  const updateRecipeMutation = useUpdateRecipe();
+  const [calculatingPrice, setCalculatingPrice] = useState(false);
 
   const {
     register,
@@ -44,7 +47,7 @@ export default function RecipeForm({ recipe, isEditing = false }: RecipeFormProp
           totalCost: 0,
           stock: 0,
         },
-  })
+  });
 
   const {
     fields: ingredientFields,
@@ -53,7 +56,7 @@ export default function RecipeForm({ recipe, isEditing = false }: RecipeFormProp
   } = useFieldArray({
     control,
     name: "ingredients",
-  })
+  });
 
   const {
     fields: protocolFields,
@@ -62,21 +65,21 @@ export default function RecipeForm({ recipe, isEditing = false }: RecipeFormProp
   } = useFieldArray({
     control,
     name: "protocol",
-  })
+  });
 
   // Observer les ingrédients pour calculer le coût total
-  const ingredients = watch("ingredients") || []
-  const [totalCost, setTotalCost] = useState(recipe?.totalCost || 0)
+  const ingredients = watch("ingredients") || [];
+  const [totalCost, setTotalCost] = useState(recipe?.totalCost || 0);
 
   // Calculate total cost when ingredients change
   useState(() => {
     const calculatedCost = ingredients.reduce((sum, ingredient) => {
-      return sum + (ingredient.quantity * ingredient.price) / 1000
-    }, 0)
+      return sum + (ingredient.quantity * ingredient.price) / 1000;
+    }, 0);
 
-    setTotalCost(calculatedCost)
-    setValue("totalCost", calculatedCost)
-  })
+    setTotalCost(calculatedCost);
+    setValue("totalCost", calculatedCost);
+  });
 
   const onSubmit = async (data: RecipeFormData) => {
     try {
@@ -84,21 +87,23 @@ export default function RecipeForm({ recipe, isEditing = false }: RecipeFormProp
         await updateRecipeMutation.mutateAsync({
           id: recipe.id,
           recipe: data,
-        })
+        });
       } else {
-        await createRecipeMutation.mutateAsync(data)
+        await createRecipeMutation.mutateAsync(data);
       }
-      router.push("/recettes")
+      router.push("/recettes");
     } catch (error) {
-      console.error("Error saving recipe:", error)
+      console.error("Error saving recipe:", error);
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <Card className="rounded-[2.5rem] p-3">
         <CardHeader>
-          <CardTitle className="text-chocolate-700 tracking-wide">Informations générales</CardTitle>
+          <CardTitle className="text-chocolate-700 tracking-wide">
+            Informations générales
+          </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid gap-2">
@@ -109,7 +114,9 @@ export default function RecipeForm({ recipe, isEditing = false }: RecipeFormProp
               placeholder="Ex: Chocolat aux baies de goji"
               className={errors.name ? "border-red-300" : ""}
             />
-            {errors.name && <p className="text-sm text-red-500">{errors.name.message}</p>}
+            {errors.name && (
+              <p className="text-sm text-red-500">{errors.name.message}</p>
+            )}
           </div>
 
           <div className="grid gap-2">
@@ -136,7 +143,9 @@ export default function RecipeForm({ recipe, isEditing = false }: RecipeFormProp
                 placeholder="Ex: 15"
                 className={errors.yield ? "border-red-300" : ""}
               />
-              {errors.yield && <p className="text-sm text-red-500">{errors.yield.message}</p>}
+              {errors.yield && (
+                <p className="text-sm text-red-500">{errors.yield.message}</p>
+              )}
             </div>
 
             <div className="grid gap-2">
@@ -157,12 +166,16 @@ export default function RecipeForm({ recipe, isEditing = false }: RecipeFormProp
 
       <Card className="rounded-[2.5rem] p-3">
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle className="text-chocolate-700 tracking-wide">Ingrédients</CardTitle>
+          <CardTitle className="text-chocolate-700 tracking-wide">
+            Ingrédients
+          </CardTitle>
           <Button
             type="button"
             variant="outline"
             size="sm"
-            onClick={() => appendIngredient({ name: "", quantity: 0, price: 0 })}
+            onClick={() =>
+              appendIngredient({ name: "", quantity: 0, price: 0 })
+            }
             className="border-green-200 text-green-700"
           >
             <Plus className="mr-2 h-4 w-4" />
@@ -180,12 +193,16 @@ export default function RecipeForm({ recipe, isEditing = false }: RecipeFormProp
                     required: "Requis",
                   })}
                   placeholder="Ex: Pâte de chocolat noir"
-                  className={errors.ingredients?.[index]?.name ? "border-red-300" : ""}
+                  className={
+                    errors.ingredients?.[index]?.name ? "border-red-300" : ""
+                  }
                 />
               </div>
 
               <div className="col-span-2">
-                <Label htmlFor={`ingredients.${index}.quantity`}>Quantité (g) :</Label>
+                <Label htmlFor={`ingredients.${index}.quantity`}>
+                  Quantité (g) :
+                </Label>
                 <Input
                   id={`ingredients.${index}.quantity`}
                   type="number"
@@ -196,12 +213,18 @@ export default function RecipeForm({ recipe, isEditing = false }: RecipeFormProp
                     valueAsNumber: true,
                   })}
                   placeholder="Ex: 100"
-                  className={errors.ingredients?.[index]?.quantity ? "border-red-300" : ""}
+                  className={
+                    errors.ingredients?.[index]?.quantity
+                      ? "border-red-300"
+                      : ""
+                  }
                 />
               </div>
 
               <div className="col-span-3">
-                <Label htmlFor={`ingredients.${index}.price`}>Prix (Ar/kg) :</Label>
+                <Label htmlFor={`ingredients.${index}.price`}>
+                  Prix (Ar/kg) :
+                </Label>
                 <Input
                   id={`ingredients.${index}.price`}
                   type="number"
@@ -212,7 +235,9 @@ export default function RecipeForm({ recipe, isEditing = false }: RecipeFormProp
                     valueAsNumber: true,
                   })}
                   placeholder="Ex: 25"
-                  className={errors.ingredients?.[index]?.price ? "border-red-300" : ""}
+                  className={
+                    errors.ingredients?.[index]?.price ? "border-red-300" : ""
+                  }
                 />
               </div>
 
@@ -234,14 +259,18 @@ export default function RecipeForm({ recipe, isEditing = false }: RecipeFormProp
 
           <div className="flex justify-between pt-4 border-t border-gray-100">
             <span className="font-medium">Coût total des ingrédients:</span>
-            <span className="font-medium text-chocolate-700">{Math.round(totalCost).toLocaleString()} Ar</span>
+            <span className="font-medium text-chocolate-700">
+              {Math.round(totalCost).toLocaleString()} Ar
+            </span>
           </div>
         </CardContent>
       </Card>
 
       <Card className="rounded-[2.5rem] p-3">
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle className="text-chocolate-700 tracking-wide">Protocole de fabrication</CardTitle>
+          <CardTitle className="text-chocolate-700 tracking-wide">
+            Protocole de fabrication
+          </CardTitle>
           <Button
             type="button"
             variant="outline"
@@ -261,7 +290,9 @@ export default function RecipeForm({ recipe, isEditing = false }: RecipeFormProp
                   Étape {index + 1}
                 </Label>
                 <div className="flex items-center gap-2">
-                  <span className="font-medium text-chocolate-700 w-6">{index + 1}.</span>
+                  <span className="font-medium text-chocolate-700 w-6">
+                    {index + 1}.
+                  </span>
                   <Input
                     id={`protocol.${index}`}
                     {...register(`protocol.${index}` as const, {
@@ -293,11 +324,17 @@ export default function RecipeForm({ recipe, isEditing = false }: RecipeFormProp
             Annuler
           </Button>
         </Link>
-        <Button type="submit" className="bg-chocolate-700 hover:bg-chocolate-800" disabled={isSubmitting}>
+        <Button
+          type="submit"
+          className="bg-chocolate-700 hover:bg-chocolate-800"
+          disabled={isSubmitting}
+        >
           <Save className="mr-2 h-4 w-4" />
-          {isEditing ? "Enregistrer les modifications" : "Enregistrer la recette"}
+          {isEditing
+            ? "Enregistrer les modifications"
+            : "Enregistrer la recette"}
         </Button>
       </div>
     </form>
-  )
+  );
 }
