@@ -133,7 +133,6 @@ export default function CalculatorClient() {
 
   return (
     <>
-      {/* Aide contextuelle */}
       <Card className="border-dashed border-2 border-green-200 bg-green-50/30">
         <CardContent className="p-4">
           <div className="flex items-start gap-3">
