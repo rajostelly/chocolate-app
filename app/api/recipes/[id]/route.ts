@@ -143,13 +143,14 @@ export async function PUT(
 // DELETE /api/recipes/[id] - Delete a recipe
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
     // Check if the recipe exists
     const existingRecipe = await prisma.recipe.findUnique({
       where: {
-        id: params.id,
+        id,
       },
     });
 
@@ -160,7 +161,7 @@ export async function DELETE(
     // Delete the recipe (ingredients will be deleted automatically due to cascade)
     await prisma.recipe.delete({
       where: {
-        id: params.id,
+        id,
       },
     });
 

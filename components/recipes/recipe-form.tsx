@@ -185,6 +185,7 @@ export default function RecipeForm({
                   valueAsNumber: true,
                 })}
                 placeholder="Ex: 0"
+                min={0}
               />
             </div>
           </div>
@@ -265,6 +266,7 @@ export default function RecipeForm({
                   className={
                     errors.ingredients?.[index]?.price ? "border-red-300" : ""
                   }
+                  min={0}
                 />
               </div>
 
