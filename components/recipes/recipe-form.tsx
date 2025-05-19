@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useForm, useFieldArray } from "react-hook-form";
@@ -93,14 +93,14 @@ export default function RecipeForm({
   const [totalCost, setTotalCost] = useState(recipe?.totalCost || 0);
 
   // Calculate total cost when ingredients change
-  useState(() => {
+  useEffect(() => {
     const calculatedCost = ingredients.reduce((sum, ingredient) => {
       return sum + (ingredient.quantity * ingredient.price) / 1000;
     }, 0);
 
     setTotalCost(calculatedCost);
     setValue("totalCost", calculatedCost);
-  });
+  }, [ingredients, setValue]);
 
   const onSubmit = async (data: RecipeForm) => {
     try {
@@ -286,12 +286,12 @@ export default function RecipeForm({
             </div>
           ))}
 
-          <div className="flex justify-between pt-4 border-t border-gray-100">
+          {/* <div className="flex justify-between pt-4 border-t border-gray-100">
             <span className="font-medium">Coût total des ingrédients:</span>
             <span className="font-medium text-chocolate-700">
               {Math.round(totalCost).toLocaleString()} Ar
             </span>
-          </div>
+          </div> */}
         </CardContent>
       </Card>
 

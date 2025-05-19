@@ -64,12 +64,22 @@ export default function CalculatorClient() {
 
         setAdjustedIngredients(miniIngredients);
         calculateCosts(miniIngredients, quantity, tabletType);
+      } else {
+        // Reset values if recipe is not found
+        setSelectedRecipe(null);
+        setAdjustedIngredients([]);
+        setCalculatedIngredients([]);
+        setTotalCost(0);
       }
     } else {
-      setSelectedRecipe(null);
-      setAdjustedIngredients([]);
-      setCalculatedIngredients([]);
-      setTotalCost(0);
+      // Only reset these values when selectedRecipeId is explicitly empty
+      // This check prevents the infinite loop
+      if (selectedRecipe !== null) {
+        setSelectedRecipe(null);
+        setAdjustedIngredients([]);
+        setCalculatedIngredients([]);
+        setTotalCost(0);
+      }
     }
   }, [selectedRecipeId, recipes]);
 
@@ -78,7 +88,7 @@ export default function CalculatorClient() {
     if (adjustedIngredients.length > 0) {
       calculateCosts(adjustedIngredients, quantity, tabletType);
     }
-  }, [quantity, tabletType]);
+  }, [quantity, tabletType, adjustedIngredients]);
 
   const calculateCosts = (
     baseIngredients: Array<{ name: string; quantity: number; price: number }>,
