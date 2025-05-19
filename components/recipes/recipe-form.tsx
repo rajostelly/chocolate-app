@@ -118,7 +118,7 @@ export default function RecipeForm({
           protocol: data.protocol.map((stepObj) => stepObj.step),
         } as RecipeFormData);
       }
-      router.push("/recettes");
+      router.push(`/recettes/${recipe?.id || ""}`);
     } catch (error) {
       console.error("Error saving recipe:", error);
     }
@@ -321,8 +321,8 @@ export default function RecipeForm({
                     {index + 1}.
                   </span>
                   <Input
-                    id={`protocol.${index}`}
-                    {...register(`protocol.${index}` as const, {
+                    id={`protocol.${index}.step`}
+                    {...register(`protocol.${index}.step` as const, {
                       required: "Requis",
                     })}
                     placeholder={`Étape ${index + 1} du protocole...`}

@@ -57,8 +57,9 @@ export async function GET(
 // PUT /api/recipes/[id] - Update a recipe
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
     const body = await request.json();
 
@@ -68,7 +69,7 @@ export async function PUT(
     // Check if the recipe exists
     const existingRecipe = await prisma.recipe.findUnique({
       where: {
-        id: params.id,
+        id,
       },
       include: {
         ingredients: true,
@@ -87,7 +88,7 @@ export async function PUT(
       // Update the recipe
       const recipe = await tx.recipe.update({
         where: {
-          id: params.id,
+          id,
         },
         data: recipeData,
       });
@@ -97,7 +98,7 @@ export async function PUT(
         // Delete existing ingredients
         await tx.ingredient.deleteMany({
           where: {
-            recipeId: params.id,
+            recipeId: id,
           },
         });
 
@@ -105,7 +106,7 @@ export async function PUT(
         await tx.ingredient.createMany({
           data: ingredients.map((ingredient) => ({
             ...ingredient,
-            recipeId: params.id,
+            recipeId: id,
           })),
         });
       }
@@ -113,7 +114,7 @@ export async function PUT(
       // Return the updated recipe with its ingredients
       return tx.recipe.findUnique({
         where: {
-          id: params.id,
+          id: id,
         },
         include: {
           ingredients: true,
