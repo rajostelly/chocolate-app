@@ -2,15 +2,17 @@ import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import RecipeDetail from "@/components/recipes/recipe-detail";
 
-export default function RecipeDetailPage({
+export default async function RecipeDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
+
   return (
     <div className="space-y-8 max-w-7xl mx-auto px-4 md:px-12">
       <Suspense fallback={<RecipeDetailSkeleton />}>
-        <RecipeDetail recipeId={params.id} />
+        <RecipeDetail recipeId={id} />
       </Suspense>
     </div>
   );

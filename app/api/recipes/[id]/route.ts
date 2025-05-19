@@ -27,12 +27,13 @@ const recipeUpdateSchema = z.object({
 // GET /api/recipes/[id] - Get a specific recipe
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const recipe = await prisma.recipe.findUnique({
       where: {
-        id: params.id,
+        id,
       },
       include: {
         ingredients: true,

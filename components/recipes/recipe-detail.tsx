@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -34,10 +34,8 @@ export default function RecipeDetail({ recipeId }: { recipeId: string }) {
     Array<{ name: string; quantity: number; price: number }>
   >([]);
 
-  // Calculate adjusted ingredients when recipe data is loaded
-  useState(() => {
+  useEffect(() => {
     if (recipe) {
-      // Calculer les ingrédients ajustés pour les mini tablettes (5g total)
       const totalWeight = recipe.ingredients.reduce(
         (sum, ing) => sum + ing.quantity,
         0
@@ -52,7 +50,7 @@ export default function RecipeDetail({ recipeId }: { recipeId: string }) {
 
       setAdjustedIngredients(miniIngredients);
     }
-  });
+  }, [recipe]);
 
   const handleDeleteRecipe = async () => {
     try {
