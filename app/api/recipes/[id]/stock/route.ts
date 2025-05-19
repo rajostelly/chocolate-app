@@ -11,8 +11,9 @@ const stockUpdateSchema = z.object({
 // PATCH /api/recipes/[id]/stock - Update recipe stock
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
     const body = await request.json();
 
@@ -22,7 +23,7 @@ export async function PATCH(
     // Check if the recipe exists
     const existingRecipe = await prisma.recipe.findUnique({
       where: {
-        id: params.id,
+        id,
       },
     });
 
@@ -33,7 +34,7 @@ export async function PATCH(
     // Update the recipe stock
     const updatedRecipe = await prisma.recipe.update({
       where: {
-        id: params.id,
+        id: id,
       },
       data: {
         stock,
