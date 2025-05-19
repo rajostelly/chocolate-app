@@ -1,7 +1,6 @@
 import type { Metadata } from "next/types";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/navbar";
 import { Toaster } from "react-hot-toast";
 import Providers from "@/components/providers";
@@ -24,16 +23,9 @@ export default function RootLayout({
     <html lang="fr" suppressHydrationWarning>
       <body className={`${inter.className} bg-white text-gray-800`}>
         <Providers>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Navbar />
-            <main className="container mx-auto px-4 py-12">{children}</main>
-            <Toaster position="top-right" />
-          </ThemeProvider>
+          <Navbar />
+          <main className="container mx-auto px-4 py-12">{children}</main>
+          <Toaster position="top-right" />
         </Providers>
       </body>
     </html>

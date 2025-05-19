@@ -285,7 +285,6 @@ export default function RecipeForm({
               </div>
             </div>
           ))}
-
           {/* <div className="flex justify-between pt-4 border-t border-gray-100">
             <span className="font-medium">Coût total des ingrédients:</span>
             <span className="font-medium text-chocolate-700">
