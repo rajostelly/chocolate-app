@@ -2,7 +2,12 @@ import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import RecipeFormContainer from "@/components/recipes/recipe-form-container";
 
-export default function EditRecipePage({ params }: { params: { id: string } }) {
+export default async function EditRecipePage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
   return (
     <div className="space-y-6 max-w-7xl mx-auto px-4 md:px-12">
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 bg-gradient-to-r from-chocolate-50/50 to-green-50/50 rounded-2xl p-8">
@@ -14,7 +19,7 @@ export default function EditRecipePage({ params }: { params: { id: string } }) {
       </div>
 
       <Suspense fallback={<FormSkeleton />}>
-        <RecipeFormContainer recipeId={params.id} />
+        <RecipeFormContainer recipeId={id} />
       </Suspense>
     </div>
   );
