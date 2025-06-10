@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <div className="space-y-14 md:space-y-20 max-w-7xl mx-auto px-4 md:px-12">
       <section className="py-16 md:py-20 text-center bg-gradient-to-r from-chocolate-50/50 to-green-50/50 rounded-[2.5rem]">
-        <h1 className="text-5xl font-bold mb-6 text-chocolate-800">
+        <h1 className="text-5xl font-bold mb-6 text-chocolate-800 tracking-wide">
           Chocolat Diabétique
         </h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
