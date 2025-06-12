@@ -3,7 +3,6 @@ import { z } from "zod";
 import { VALIDATION_MESSAGES } from "@/constants";
 import { prisma } from "@/lib/db";
 
-// Schema for validating recipe creation
 const recipeSchema = z.object({
   name: z.string().min(1, VALIDATION_MESSAGES.REQUIRED_NAME),
   description: z.string().optional(),
