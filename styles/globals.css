@@ -84,6 +84,7 @@ body {
   }
 }
 
+// Base style
 @layer base {
   * {
     @apply border-border p-0 m-0 box-border;
