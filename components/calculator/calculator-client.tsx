@@ -138,7 +138,8 @@ export default function CalculatorClient() {
     );
   };
 
-  if (isLoading) {
+  // Display loading state
+  if (isLoading && !recipes.length) {
     return <div className="text-center py-12">Chargement des recettes...</div>;
   }
 
