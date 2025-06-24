@@ -10,6 +10,7 @@ import ispm from "@/public/ispm.jpeg";
 export default function Navbar() {
   const pathname = usePathname();
 
+  // Function to determine if the current path is active
   const isActive = (path: string) => {
     return pathname === path;
   };
