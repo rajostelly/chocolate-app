@@ -58,6 +58,7 @@ export default function CalculatorClient() {
         // Si la recette est pour des tablettes normales, on ajuste pour les mini tablettes
         const scaleFactor = MINI_TABLET_WEIGHT / totalWeight;
 
+        // Créer une liste d'ingrédients ajustés pour les mini tablettes
         const miniIngredients = recipe.ingredients.map((ing) => ({
           name: ing.name,
           quantity: ing.quantity * scaleFactor,
