@@ -1,17 +1,18 @@
-import { v4 as uuidv4 } from "uuid"
-import type { Recipe } from "./types"
+import { v4 as uuidv4 } from "uuid";
+import type { Recipe } from "./types";
 
 export const initialRecipes: Recipe[] = [
   {
     id: uuidv4(),
     name: "Chocolat à base de baie de goji sucré avec de la stévia",
-    description: "Un délicieux chocolat noir enrichi de baies de goji et sucré à la stévia.",
+    description:
+      "Un délicieux chocolat noir enrichi de baies de goji et sucré à la stévia.",
     ingredients: [
-      { name: "Pâte de chocolat noir 100%", quantity: 97, price: 100000 },
+      { name: "Pâte de chocolat noir 100%", quantity: 97, price: 10000 },
       { name: "Extrait de stévia", quantity: 0.5, price: 600000 },
       { name: "Baie de goji", quantity: 15, price: 160000 },
       { name: "Poudre de baobab", quantity: 1.5, price: 240000 },
-      { name: "Jus de citron", quantity: 0.05, price: 32000 },
+      { name: "Jus de citron", quantity: 0.05, price: 3200 },
       { name: "Zeste de citron", quantity: 0.3, price: 60000 },
     ],
     protocol: [
@@ -32,7 +33,8 @@ export const initialRecipes: Recipe[] = [
   {
     id: uuidv4(),
     name: "Chocolat à la poudre d'amande et sucré à la stévia",
-    description: "Un chocolat onctueux à la poudre d'amande, parfaitement équilibré.",
+    description:
+      "Un chocolat onctueux à la poudre d'amande, parfaitement équilibré.",
     ingredients: [
       { name: "Pâte de chocolat noir 100%", quantity: 89, price: 100000 },
       { name: "Extrait de stévia", quantity: 0.3, price: 600000 },
@@ -58,7 +60,8 @@ export const initialRecipes: Recipe[] = [
   {
     id: uuidv4(),
     name: "Chocolat sucré à la stévia avec une pincée de sel",
-    description: "L'alliance parfaite du chocolat noir, de la stévia et d'une touche de sel.",
+    description:
+      "L'alliance parfaite du chocolat noir, de la stévia et d'une touche de sel.",
     ingredients: [
       { name: "Pâte de chocolat noir 100%", quantity: 98, price: 100000 },
       { name: "Extrait de stévia", quantity: 0.5, price: 600000 },
@@ -81,4 +84,4 @@ export const initialRecipes: Recipe[] = [
     totalCost: 11400,
     stock: 25,
   },
-]
+];
