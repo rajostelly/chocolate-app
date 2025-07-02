@@ -9,11 +9,10 @@ export const initialRecipes: Recipe[] = [
       "Un délicieux chocolat noir enrichi de baies de goji et sucré à la stévia.",
     ingredients: [
       { name: "Pâte de chocolat noir 100%", quantity: 97, price: 10000 },
-      { name: "Extrait de stévia", quantity: 0.5, price: 600000 },
+      { name: "Extrait de stévia", quantity: 0.5, price: 60000 },
       { name: "Baie de goji", quantity: 15, price: 160000 },
       { name: "Poudre de baobab", quantity: 1.5, price: 240000 },
       { name: "Jus de citron", quantity: 0.05, price: 3200 },
-      { name: "Zeste de citron", quantity: 0.3, price: 60000 },
     ],
     protocol: [
       "Peser 0,5 g d'extrait de stévia.",
