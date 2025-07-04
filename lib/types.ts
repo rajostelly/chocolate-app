@@ -5,7 +5,6 @@ export interface Ingredient {
   price: number;
 }
 
-// this is a TypeScript interface for a recipe object
 export interface Recipe {
   id: string;
   name: string;
