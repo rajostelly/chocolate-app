@@ -5,7 +5,6 @@ export interface Ingredient {
   price: number;
 }
 
-// Recipe interface represents a recipe with its details
 export interface Recipe {
   name: string;
   description?: string;
