@@ -39,7 +39,7 @@ export const initialRecipes: Recipe[] = [
       { name: "Extrait de stévia", quantity: 0.3, price: 600000 },
       { name: "Poudre d'amande", quantity: 10, price: 80000 },
       { name: "Jus de citron", quantity: 0.05, price: 32000 },
-      { name: "Zeste de citron", quantity: 0.3, price: 60000 },
+      { name: "Zeste de citron", quantity: 0.3, price: 6000 },
     ],
     protocol: [
       "Peser 0,3 g d'extrait de stévia.",
