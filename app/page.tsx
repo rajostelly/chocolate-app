@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { ChevronRight, Candy, Calculator, Utensils } from "lucide-react";
 
+// This is the main page of the application, showcasing diabetic-friendly chocolate recipes and features.
 export default function Home() {
   return (
     <div className="space-y-14 md:space-y-20 max-w-7xl mx-auto px-4 md:px-12">
