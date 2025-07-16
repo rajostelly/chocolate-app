@@ -42,7 +42,7 @@ export default function CalculatorClient() {
     }
   }, [error]);
 
-  // Mettre à jour la recette sélectionnée
+  // Update selected recipe and adjust ingredients when recipe changes
   useEffect(() => {
     if (selectedRecipeId) {
       const recipe = recipes.find((r) => r.id === selectedRecipeId);
