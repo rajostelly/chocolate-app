@@ -49,7 +49,7 @@ export default function CalculatorClient() {
       setSelectedRecipe(recipe || null);
 
       if (recipe) {
-        // Calculer les ingrédients ajustés pour les mini tablettes (5g total)
+        // Calcul total weight of the recipe ingredients
         const totalWeight = recipe.ingredients.reduce(
           (sum, ing) => sum + ing.quantity,
           0
