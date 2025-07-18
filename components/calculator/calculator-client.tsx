@@ -93,7 +93,7 @@ export default function CalculatorClient() {
     }
   }, [quantity, tabletType, adjustedIngredients]);
 
-  // Fonction pour calculer les coûts en fonction des ingrédients de base
+  // Function to calculate costs based on selected recipe, quantity, and tablet type
   const calculateCosts = (
     baseIngredients: Array<{ name: string; quantity: number; price: number }>,
     chocolateQuantity: number,
