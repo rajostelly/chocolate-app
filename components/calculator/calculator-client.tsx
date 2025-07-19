@@ -99,7 +99,7 @@ export default function CalculatorClient() {
     chocolateQuantity: number,
     type: "normal" | "mini"
   ) => {
-    // Ajuster la quantité en fonction du type de tablette
+    // Adjust the conversion factor based on tablet type
     const adjustmentFactor = type === "normal" ? CONVERSION_RATIO : 1;
 
     // Calculer les quantités et coûts pour le nombre de chocolats demandé
