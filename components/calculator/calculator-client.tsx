@@ -102,7 +102,7 @@ export default function CalculatorClient() {
     // Adjust the conversion factor based on tablet type
     const adjustmentFactor = type === "normal" ? CONVERSION_RATIO : 1;
 
-    // Calculer les quantités et coûts pour le nombre de chocolats demandé
+    // Calculate the adjusted ingredients based on the selected type and quantity
     const adjustedIngredients = baseIngredients.map((ingredient) => {
       const adjustedQuantity =
         ingredient.quantity * adjustmentFactor * chocolateQuantity;
