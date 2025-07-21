@@ -131,7 +131,7 @@ export default function CalculatorClient() {
     );
   };
 
-  // Calculer le coût unitaire pour une tablette normale
+  // Calculate the cost for a normal tablet (100g)
   const getNormalTabletCost = (
     baseIngredients: Array<{ name: string; quantity: number; price: number }>
   ) => {
