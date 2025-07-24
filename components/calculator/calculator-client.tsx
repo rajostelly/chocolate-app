@@ -114,7 +114,7 @@ export default function CalculatorClient() {
       };
     });
 
-    // Calculer le coût total
+    // Cost total calculation
     const total = adjustedIngredients.reduce((sum, ing) => sum + ing.price, 0);
 
     setCalculatedIngredients(adjustedIngredients);
