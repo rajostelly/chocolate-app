@@ -18,7 +18,6 @@ interface RecipeFormProps {
   isEditing?: boolean;
 }
 
-// Define a more explicit form type
 type RecipeForm = {
   name: string;
   description?: string | null;
