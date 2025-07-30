@@ -34,7 +34,6 @@ export default function RecipeDetail({ recipeId }: { recipeId: string }) {
     Array<{ name: string; quantity: number; price: number }>
   >([]);
 
-  // Ajuster les ingrédients en fonction du type de tablette sélectionné
   useEffect(() => {
     if (recipe) {
       const totalWeight = recipe.ingredients.reduce(
