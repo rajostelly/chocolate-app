@@ -153,7 +153,7 @@ export default function RecipeDetail({ recipeId }: { recipeId: string }) {
           {recipe.name}
         </h1>
         {recipe.description && (
-          <p className="text-gray-700 mb-6 max-w-3xl leading-relaxed tracking-wider">
+          <p className="text-gray-700 mb-6 max-w-3xl leading-relaxed tracking-wide">
             {recipe.description}
           </p>
         )}
