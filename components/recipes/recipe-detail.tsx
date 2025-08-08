@@ -94,7 +94,7 @@ export default function RecipeDetail({ recipeId }: { recipeId: string }) {
     return sum + (ing.quantity * ing.price) / 1000;
   }, 0);
 
-  // Calculer le poids total des ingrédients affichés
+  // Compute the total weight of the displayed ingredients
   const displayTotalWeight = displayIngredients.reduce(
     (sum, ing) => sum + ing.quantity,
     0
