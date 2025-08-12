@@ -20,7 +20,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
-// Constantes pour les types de tablettes
+// constants for tablet weights
 const MINI_TABLET_WEIGHT = 5; // en grammes
 const NORMAL_TABLET_WEIGHT = 100; // en grammes
 const CONVERSION_RATIO = NORMAL_TABLET_WEIGHT / MINI_TABLET_WEIGHT; // 20 mini tablettes = 1 tablette normale
