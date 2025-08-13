@@ -55,7 +55,7 @@ export default function CalculatorClient() {
           0
         );
 
-        // Si la recette est pour des tablettes normales, on ajuste pour les mini tablettes
+        // If the recipe is found, calculate adjusted ingredients
         const scaleFactor = MINI_TABLET_WEIGHT / totalWeight;
 
         // Créer une liste d'ingrédients ajustés pour les mini tablettes
