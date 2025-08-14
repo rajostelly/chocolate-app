@@ -53,6 +53,7 @@ export default function RecipeDetail({ recipeId }: { recipeId: string }) {
     }
   }, [recipe]);
 
+  // Handle recipe deletion
   const handleDeleteRecipe = async () => {
     try {
       await deleteRecipeMutation.mutateAsync(recipeId);
