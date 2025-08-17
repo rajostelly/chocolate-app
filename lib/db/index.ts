@@ -2,7 +2,6 @@ import { PrismaClient } from "@/lib/generated/prisma";
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
 
-// This is a hack to make sure we don't create multiple instances of PrismaClient
 export const prisma =
   globalForPrisma.prisma ||
   new PrismaClient({
