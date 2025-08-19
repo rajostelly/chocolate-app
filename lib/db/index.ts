@@ -2,6 +2,7 @@ import { PrismaClient } from "@/lib/generated/prisma";
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
 
+// This is a temporary fix for the issue with the PrismaClient being instantiated multiple times
 export const prisma =
   globalForPrisma.prisma ||
   new PrismaClient({
