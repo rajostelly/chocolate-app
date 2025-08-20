@@ -21,7 +21,7 @@ export default function Navbar() {
           <div className="flex items-center gap-4 justify-center">
             <Image
               src={ispm}
-              alt="ispm logo"
+              alt="Logo d'ISPM"
               className="h-12"
               width={48}
               height={48}
