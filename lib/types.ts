@@ -4,7 +4,7 @@ export interface Ingredient {
   quantity: number;
   price: number;
 }
-
+// Recipe interface
 export interface Recipe {
   id: string;
   name: string;
